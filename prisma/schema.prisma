@@ -1,0 +1,358 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  zaloId            String?  @unique
+  username          String   @unique
+  email             String?  @unique
+  displayName       String
+  avatar            String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  lastLoginAt       DateTime @default(now())
+  
+  // Game Progress
+  coins             Int      @default(0)
+  gems              Int      @default(0)
+  tickets           Int      @default(0)
+  energy            Int      @default(100)
+  maxEnergy         Int      @default(100)
+  lastEnergyUpdate  DateTime @default(now())
+  
+  // Dragon Stats
+  dragonType        DragonType @default(FIRE)
+  dragonLevel       Int        @default(1)
+  dragonExp         Int        @default(0)
+  
+  // Tap Stats
+  baseTap           Int      @default(1)
+  tapMultiplier     Float    @default(1.0)
+  critChance        Float    @default(0.01)
+  critMultiplier    Float    @default(10.0)
+  afkTapsPerSecond  Float    @default(0.0)
+  spiritBonus       Float    @default(1.0)
+  
+  // Upgrades (Dragon Attributes)
+  claws             Int      @default(0)  // Tap multiplier
+  scales            Int      @default(0)  // Energy capacity
+  fire              Int      @default(0)  // Crit chance
+  wings             Int      @default(0)  // AFK taps
+  spirit            Int      @default(0)  // Global bonus
+  
+  // VIP & Premium
+  isVip             Boolean  @default(false)
+  vipExpiresAt      DateTime?
+  
+  // Battle Pass
+  battlePassLevel   Int      @default(0)
+  battlePassExp     Int      @default(0)
+  battlePassSeason  Int      @default(1)
+  hasAdvancedPass   Boolean  @default(false)
+  hasLuxuryPass     Boolean  @default(false)
+  
+  // Daily & Streaks
+  dailyStreakCount  Int      @default(0)
+  lastDailyReward   DateTime?
+  
+  // AFK Bank
+  afkBank           Int      @default(0)
+  lastAfkCollection DateTime @default(now())
+  
+  // Analytics
+  totalTaps         Int      @default(0)
+  totalCoinsEarned  Int      @default(0)
+  totalMoneySpent   Float    @default(0.0)
+  
+  // Relations
+  friends           Friend[]      @relation("UserFriends")
+  friendOf          Friend[]      @relation("FriendOf")
+  inventory         Inventory[]
+  purchases         Purchase[]
+  analytics         Analytics[]
+  tasks             UserTask[]
+  lootboxOpens      LootboxOpen[]
+  gameResults       GameResult[]
+  
+  @@map("users")
+}
+
+model Friend {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  friendId    String   @db.ObjectId
+  createdAt   DateTime @default(now())
+  bonusClaimed Boolean @default(false)
+  
+  user        User     @relation("UserFriends", fields: [userId], references: [id], onDelete: Cascade)
+  friend      User     @relation("FriendOf", fields: [friendId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, friendId])
+  @@map("friends")
+}
+
+model Inventory {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String    @db.ObjectId
+  itemType   ItemType
+  itemId     String
+  quantity   Int       @default(1)
+  createdAt  DateTime  @default(now())
+  expiresAt  DateTime?
+  
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("inventory")
+}
+
+model Purchase {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String        @db.ObjectId
+  productId   String
+  productType ProductType
+  amount      Float
+  currency    String        @default("VND")
+  status      PaymentStatus @default(PENDING)
+  provider    String        @default("ZaloPay")
+  receipt     String?
+  createdAt   DateTime      @default(now())
+  completedAt DateTime?
+  
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("purchases")
+}
+
+model LootTable {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  name        String        @unique
+  description String?
+  items       LootItem[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  isActive    Boolean       @default(true)
+  
+  @@map("loot_tables")
+}
+
+model LootItem {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  lootTableId  String     @db.ObjectId
+  itemType     ItemType
+  itemId       String
+  quantity     Int        @default(1)
+  rarity       Rarity
+  probability  Float      // 0.0 to 1.0
+  
+  lootTable    LootTable  @relation(fields: [lootTableId], references: [id], onDelete: Cascade)
+  
+  @@map("loot_items")
+}
+
+model LootboxOpen {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String     @db.ObjectId
+  lootTableId  String     @db.ObjectId
+  rewards      Json       // Array of received items
+  pityCounter  Int        @default(0)
+  openedAt     DateTime   @default(now())
+  
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("lootbox_opens")
+}
+
+model Task {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  description  String
+  type         TaskType
+  category     TaskCategory
+  requirement  Json       // Task-specific requirements
+  reward       Json       // Reward details
+  isActive     Boolean    @default(true)
+  startDate    DateTime?
+  endDate      DateTime?
+  createdAt    DateTime   @default(now())
+  
+  userTasks    UserTask[]
+  
+  @@map("tasks")
+}
+
+model UserTask {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String     @db.ObjectId
+  taskId      String     @db.ObjectId
+  progress    Int        @default(0)
+  completed   Boolean    @default(false)
+  claimedAt   DateTime?
+  createdAt   DateTime   @default(now())
+  
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  task        Task       @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, taskId])
+  @@map("user_tasks")
+}
+
+model Leaderboard {
+  id         String          @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String          @db.ObjectId
+  username   String
+  score      Int
+  type       LeaderboardType
+  season     Int             @default(1)
+  week       Int?
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+  
+  @@map("leaderboards")
+}
+
+model GameResult {
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String     @db.ObjectId
+  gameType   GameType
+  result     Json       // Game-specific result data
+  reward     Json?      // Reward received
+  createdAt  DateTime   @default(now())
+  
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("game_results")
+}
+
+model Analytics {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String?   @db.ObjectId
+  event      String
+  properties Json?
+  createdAt  DateTime  @default(now())
+  sessionId  String?
+  
+  user       User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("analytics")
+}
+
+model Config {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  key       String   @unique
+  value     Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("configs")
+}
+
+model BattlePass {
+  id          String           @id @default(auto()) @map("_id") @db.ObjectId
+  season      Int              @unique
+  name        String
+  description String?
+  startDate   DateTime
+  endDate     DateTime
+  isActive    Boolean          @default(false)
+  tiers       BattlePassTier[]
+  createdAt   DateTime         @default(now())
+  
+  @@map("battle_passes")
+}
+
+model BattlePassTier {
+  id            String       @id @default(auto()) @map("_id") @db.ObjectId
+  battlePassId  String       @db.ObjectId
+  level         Int
+  expRequired   Int
+  freeReward    Json?        // Free tier reward
+  advancedReward Json?       // Advanced pass reward
+  luxuryReward  Json?        // Luxury pass reward
+  
+  battlePass    BattlePass   @relation(fields: [battlePassId], references: [id], onDelete: Cascade)
+  
+  @@unique([battlePassId, level])
+  @@map("battle_pass_tiers")
+}
+
+// Enums
+enum DragonType {
+  FIRE
+  WATER
+  EARTH
+  AIR
+  SHADOW
+  LIGHT
+}
+
+enum ItemType {
+  COINS
+  GEMS
+  TICKETS
+  ENERGY_REFILL
+  VIP_DAYS
+  COSMETIC
+  BOOSTER
+  UPGRADE_MATERIAL
+}
+
+enum ProductType {
+  ENERGY
+  TICKETS
+  LOOTBOX
+  VIP
+  COSMETIC
+  BATTLE_PASS
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum Rarity {
+  COMMON
+  RARE
+  EPIC
+  LEGENDARY
+}
+
+enum TaskType {
+  DAILY
+  WEEKLY
+  PARTNER
+  ACHIEVEMENT
+}
+
+enum TaskCategory {
+  TAP
+  ENERGY
+  SOCIAL
+  PURCHASE
+  MINI_GAME
+  LOGIN
+}
+
+enum LeaderboardType {
+  GLOBAL
+  WEEKLY
+  FRIENDS
+}
+
+enum GameType {
+  LUCKY_WHEEL
+  HEADS_TAILS
+  RAFFLE
+  VOUCHER_HUNTER
+}

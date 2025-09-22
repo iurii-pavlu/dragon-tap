@@ -2,26 +2,160 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 24 100% 60%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --radius: 0.5rem;
+  }
+  
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 24 100% 60%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Dragon-themed gradients */
+.dragon-gradient-fire {
+  background: linear-gradient(135deg, #ff6b35, #ff8e53, #ff4757);
+}
+
+.dragon-gradient-water {
+  background: linear-gradient(135deg, #3742fa, #5352ed, #70a1ff);
+}
+
+.dragon-gradient-earth {
+  background: linear-gradient(135deg, #2ed573, #7bed9f, #5f27cd);
+}
+
+.dragon-gradient-air {
+  background: linear-gradient(135deg, #eccc68, #ffd32a, #ff9ff3);
+}
+
+.dragon-gradient-shadow {
+  background: linear-gradient(135deg, #2f3542, #40407a, #706fd3);
+}
+
+.dragon-gradient-light {
+  background: linear-gradient(135deg, #f1c40f, #f39c12, #e67e22);
+}
+
+/* Tap animation */
+.tap-animation {
+  animation: tap-pulse 0.3s ease-out;
+}
+
+@keyframes tap-pulse {
+  0% { 
+    transform: scale(1); 
+    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
+  }
+  50% { 
+    transform: scale(1.1); 
+    box-shadow: 0 0 0 10px rgba(255, 107, 53, 0.3);
+  }
+  100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 0 20px rgba(255, 107, 53, 0);
+  }
+}
+
+/* Critical hit animation */
+.crit-animation {
+  animation: crit-burst 0.5s ease-out;
+}
+
+@keyframes crit-burst {
+  0% { 
+    transform: scale(1) rotate(0deg); 
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.8);
+  }
+  25% { 
+    transform: scale(1.2) rotate(5deg); 
+    box-shadow: 0 0 0 15px rgba(255, 215, 0, 0.5);
+  }
+  75% { 
+    transform: scale(1.1) rotate(-2deg); 
+    box-shadow: 0 0 0 25px rgba(255, 215, 0, 0.2);
+  }
+  100% { 
+    transform: scale(1) rotate(0deg); 
+    box-shadow: 0 0 0 35px rgba(255, 215, 0, 0);
+  }
+}
+
+/* Floating coins animation */
+.floating-coin {
+  animation: float-up 1s ease-out forwards;
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(1.2);
+  }
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+  .mobile-safe-area {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }
