@@ -1,0 +1,95 @@
+{
+  "common": {
+    "loading": "Đang tải...",
+    "error": "Đã xảy ra lỗi",
+    "confirm": "Xác nhận",
+    "cancel": "Hủy bỏ",
+    "claim": "Nhận",
+    "buy": "Mua",
+    "level": "Cấp độ",
+    "coins": "Xu",
+    "energy": "Năng lượng"
+  },
+  "navigation": {
+    "friends": "Bạn bè",
+    "tasks": "Nhiệm vụ",
+    "tap": "Chạm!",
+    "rating": "Xếp hạng",
+    "games": "Trò chơi"
+  },
+  "tap": {
+    "title": "Chạm để kiếm",
+    "getLucky": "MAY MẮN",
+    "inventory": "Kho đồ",
+    "boosters": "Tăng cường",
+    "dailyRewards": "Thưởng hàng ngày",
+    "levelUp": "Cấp độ {level}",
+    "energyFull": "Năng lượng đầy!",
+    "tapToEarn": "Chạm vào rồng để kiếm xu!"
+  },
+  "tasks": {
+    "title": "Nhiệm vụ",
+    "ourTasks": "Nhiệm vụ của chúng tôi",
+    "partners": "Đối tác",
+    "complete": "Hoàn thành",
+    "completed": "Đã hoàn thành",
+    "reward": "Phần thưởng"
+  },
+  "games": {
+    "title": "Trò chơi",
+    "luckyWheel": "Vòng quay may mắn",
+    "headsOrTails": "Sấp ngửa",
+    "raffle": "Xổ số",
+    "tonHunter": "Thợ săn TON",
+    "play": "CHƠI"
+  },
+  "dailyRewards": {
+    "title": "Thưởng hàng ngày",
+    "day": "Ngày",
+    "pickUp": "NHẬN",
+    "claimed": "Đã nhận",
+    "comeBackTomorrow": "Quay lại vào ngày mai!"
+  },
+  "boosters": {
+    "title": "Tăng cường",
+    "multitap": "Đa chạm",
+    "energyLimit": "Giới hạn năng lượng",
+    "rechargingSpeed": "Tốc độ sạc",
+    "turbo": "Turbo",
+    "fullEnergy": "Năng lượng đầy",
+    "description": {
+      "multitap": "Tăng xu mỗi lần chạm",
+      "energyLimit": "Tăng dung lượng năng lượng tối đa",
+      "rechargingSpeed": "Tái tạo năng lượng nhanh hơn", 
+      "turbo": "Gấp ba xu trong thời gian giới hạn"
+    }
+  },
+  "rating": {
+    "title": "Bảng xếp hạng",
+    "rank": "Hạng",
+    "player": "Người chơi",
+    "coins": "Xu",
+    "myRank": "Hạng của tôi"
+  },
+  "friends": {
+    "title": "Bạn bè",
+    "invite": "Mời bạn bè",
+    "referralLink": "Liên kết giới thiệu",
+    "copy": "Sao chép",
+    "copied": "Đã sao chép!",
+    "invited": "Đã mời",
+    "pending": "Đang chờ",
+    "accepted": "Đã chấp nhận"
+  },
+  "battlepass": {
+    "title": "Huy hiệu chiến đấu",
+    "free": "Miễn phí",
+    "advanced": "Gói nâng cao",
+    "luxury": "Gói sang trọng",
+    "claimAll": "Nhận tất cả",
+    "upgrade": "Nâng cấp",
+    "level": "Cấp độ {level}",
+    "xp": "XP",
+    "daysLeft": "Còn {days} ngày"
+  }
+}

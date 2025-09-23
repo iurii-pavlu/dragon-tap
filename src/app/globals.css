@@ -2,60 +2,209 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 24 100% 60%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --radius: 0.5rem;
+:root {
+  --background: #0B0B0B;
+  --surface: #111111;
+  --foreground: #F5F5F5;
+  --primary: #F9A825;
+  --primary-foreground: #0B0B0B;
+  --secondary: #0EA5E9;
+  --secondary-foreground: #F5F5F5;
+  --muted: #27272A;
+  --muted-foreground: #A1A1AA;
+  --accent: #FB923C;
+  --accent-foreground: #0B0B0B;
+  --destructive: #EF4444;
+  --destructive-foreground: #F5F5F5;
+  --border: #27272A;
+  --input: #27272A;
+  --ring: #F9A825;
+  --card: #111111;
+  --card-foreground: #F5F5F5;
+  --popover: #111111;
+  --popover-foreground: #F5F5F5;
+  --radius: 0.75rem;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', ui-sans-serif, system-ui;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "cv11", "ss01";
+  font-variation-settings: "opsz" 32;
+  letter-spacing: -0.025em;
+}
+
+/* Ensure mobile-first design */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
   }
-  
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 24 100% 60%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+}
+
+/* Remove default button styles */
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Tap feedback animation */
+.tap-feedback {
+  @apply transform transition-transform duration-150 ease-in-out active:scale-95;
+}
+
+/* Coin glow effect */
+.coin-glow {
+  filter: drop-shadow(0 0 10px rgba(249, 168, 37, 0.3));
+}
+
+/* Energy bar gradient */
+.energy-gradient {
+  background: linear-gradient(90deg, #22C55E 0%, #16A34A 100%);
+}
+
+/* Card shadows matching Gangsta Monkey */
+.card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+/* Tab bar styling */
+.tab-bar {
+  background: rgba(17, 17, 17, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid #27272A;
+}
+
+/* Status slab styling */
+.status-slab {
+  background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+  border: 1px solid #27272A;
+}
+
+/* Button variants */
+.btn-primary {
+  @apply bg-coin text-background font-semibold tracking-tight;
+  background: linear-gradient(145deg, #F9A825 0%, #F57C00 100%);
+}
+
+.btn-secondary {
+  @apply bg-secondary text-text-primary font-semibold tracking-tight;
+  background: linear-gradient(145deg, #0EA5E9 0%, #0284C7 100%);
+}
+
+/* Floating animations */
+@keyframes float-up {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-60px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.float-up {
+  animation: float-up 1s ease-out forwards;
+}
+
+/* Pulse animation for notifications */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(249, 168, 37, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(249, 168, 37, 0);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Tap animation for dragon */
+@keyframes tap-pulse {
+  0% { 
+    transform: scale(1); 
+  }
+  50% { 
+    transform: scale(1.1); 
+  }
+  100% { 
+    transform: scale(1); 
+  }
+}
+
+.tap-animation {
+  animation: tap-pulse 0.2s ease-out;
+}
+
+/* Critical hit animation */
+@keyframes crit-burst {
+  0% { 
+    transform: scale(1) rotate(0deg); 
+    filter: drop-shadow(0 0 0 rgba(249, 168, 37, 0.8));
+  }
+  25% { 
+    transform: scale(1.2) rotate(5deg); 
+    filter: drop-shadow(0 0 15px rgba(249, 168, 37, 0.8));
+  }
+  75% { 
+    transform: scale(1.1) rotate(-2deg); 
+    filter: drop-shadow(0 0 25px rgba(249, 168, 37, 0.6));
+  }
+  100% { 
+    transform: scale(1) rotate(0deg); 
+    filter: drop-shadow(0 0 0 rgba(249, 168, 37, 0));
+  }
+}
+
+.crit-animation {
+  animation: crit-burst 0.5s ease-out;
+}
+
+/* Floating coins animation */
+.floating-coin {
+  animation: float-up 1s ease-out forwards;
+}
+
+/* Badge styles */
+.badge {
+  @apply px-2 py-1 text-xs font-semibold rounded-full;
+}
+
+.badge-coin {
+  @apply bg-coin text-background;
+}
+
+.badge-energy {
+  @apply bg-energy text-background;
+}
+
+.badge-level {
+  @apply bg-accent-purple text-text-primary;
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+  .mobile-safe-area {
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
 
@@ -65,97 +214,5 @@
   }
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-/* Dragon-themed gradients */
-.dragon-gradient-fire {
-  background: linear-gradient(135deg, #ff6b35, #ff8e53, #ff4757);
-}
-
-.dragon-gradient-water {
-  background: linear-gradient(135deg, #3742fa, #5352ed, #70a1ff);
-}
-
-.dragon-gradient-earth {
-  background: linear-gradient(135deg, #2ed573, #7bed9f, #5f27cd);
-}
-
-.dragon-gradient-air {
-  background: linear-gradient(135deg, #eccc68, #ffd32a, #ff9ff3);
-}
-
-.dragon-gradient-shadow {
-  background: linear-gradient(135deg, #2f3542, #40407a, #706fd3);
-}
-
-.dragon-gradient-light {
-  background: linear-gradient(135deg, #f1c40f, #f39c12, #e67e22);
-}
-
-/* Tap animation */
-.tap-animation {
-  animation: tap-pulse 0.3s ease-out;
-}
-
-@keyframes tap-pulse {
-  0% { 
-    transform: scale(1); 
-    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
-  }
-  50% { 
-    transform: scale(1.1); 
-    box-shadow: 0 0 0 10px rgba(255, 107, 53, 0.3);
-  }
-  100% { 
-    transform: scale(1); 
-    box-shadow: 0 0 0 20px rgba(255, 107, 53, 0);
-  }
-}
-
-/* Critical hit animation */
-.crit-animation {
-  animation: crit-burst 0.5s ease-out;
-}
-
-@keyframes crit-burst {
-  0% { 
-    transform: scale(1) rotate(0deg); 
-    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.8);
-  }
-  25% { 
-    transform: scale(1.2) rotate(5deg); 
-    box-shadow: 0 0 0 15px rgba(255, 215, 0, 0.5);
-  }
-  75% { 
-    transform: scale(1.1) rotate(-2deg); 
-    box-shadow: 0 0 0 25px rgba(255, 215, 0, 0.2);
-  }
-  100% { 
-    transform: scale(1) rotate(0deg); 
-    box-shadow: 0 0 0 35px rgba(255, 215, 0, 0);
-  }
-}
-
-/* Floating coins animation */
-.floating-coin {
-  animation: float-up 1s ease-out forwards;
-}
-
-@keyframes float-up {
-  0% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-100px) scale(1.2);
-  }
-}
-
-/* Mobile-first responsive design */
-@media (max-width: 768px) {
-  .mobile-safe-area {
-    padding-bottom: env(safe-area-inset-bottom);
   }
 }

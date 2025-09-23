@@ -1,0 +1,20 @@
+{
+  "energyCap": 500,
+  "tapBase": 1,
+  "turboMultiplier": 3,
+  "energyRegenRate": 1,
+  "energyRegenInterval": 60000,
+  "boosterPrices": {
+    "multitap": [4000, 12000, 30000, 80000, 200000, 500000, 1200000, 3000000, 7500000, 18000000],
+    "energyCap": [200, 600, 1500, 4000, 10000, 25000, 60000, 150000, 375000, 900000],
+    "recharge": [2000, 6000, 15000, 40000, 100000, 250000, 600000, 1500000, 3750000, 9000000]
+  },
+  "dailyRewards": [500, 1000, 2500, 5000, 15000, 25000, 100000, 500000, 1000000, 5000000],
+  "battlePassPrices": {
+    "advanced": 39000,
+    "luxury": 59000
+  },
+  "maxMultitapLevel": 10,
+  "maxEnergyCapLevel": 10,
+  "maxRechargeLevel": 10
+}

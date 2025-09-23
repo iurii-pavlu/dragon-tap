@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "node scripts/seed.js",
+    "format": "prettier --write .",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
@@ -23,6 +26,7 @@
     "@tailwindcss/postcss": "^4.1.13",
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/mongoose": "^5.11.96",
     "@types/node": "24.5.2",
     "@types/react": "19.1.13",
     "@types/react-dom": "19.1.9",
@@ -37,6 +41,7 @@
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.544.0",
     "mongodb": "^6.20.0",
+    "mongoose": "^8.18.2",
     "next": "15.5.3",
     "next-auth": "^4.24.11",
     "next-themes": "^0.4.6",
@@ -53,6 +58,7 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.9.2",
     "use-sound": "^5.0.0",
+    "zod": "^4.1.11",
     "zustand": "^5.0.8"
   }
 }

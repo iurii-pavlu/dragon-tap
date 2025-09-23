@@ -1,0 +1,95 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error occurred",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "claim": "Claim",
+    "buy": "Buy",
+    "level": "Level",
+    "coins": "Coins",
+    "energy": "Energy"
+  },
+  "navigation": {
+    "friends": "Friends",
+    "tasks": "Tasks",
+    "tap": "Tap!",
+    "rating": "Rating",
+    "games": "Games"
+  },
+  "tap": {
+    "title": "Tap to Earn",
+    "getLucky": "GET LUCKY",
+    "inventory": "Inventory",
+    "boosters": "Boosters",
+    "dailyRewards": "Daily Rewards",
+    "levelUp": "Level {level}",
+    "energyFull": "Energy Full!",
+    "tapToEarn": "Tap the dragon to earn coins!"
+  },
+  "tasks": {
+    "title": "Tasks",
+    "ourTasks": "Our Tasks",
+    "partners": "Partner's",
+    "complete": "Complete",
+    "completed": "Completed",
+    "reward": "Reward"
+  },
+  "games": {
+    "title": "Games",
+    "luckyWheel": "Lucky Wheel",
+    "headsOrTails": "Heads or Tails",
+    "raffle": "Raffle",
+    "tonHunter": "TON Hunter",
+    "play": "PLAY"
+  },
+  "dailyRewards": {
+    "title": "Daily Rewards",
+    "day": "Day",
+    "pickUp": "PICK UP",
+    "claimed": "Claimed",
+    "comeBackTomorrow": "Come back tomorrow!"
+  },
+  "boosters": {
+    "title": "Boosters",
+    "multitap": "Multitap",
+    "energyLimit": "Energy Limit",
+    "rechargingSpeed": "Recharging Speed",
+    "turbo": "Turbo",
+    "fullEnergy": "Full Energy",
+    "description": {
+      "multitap": "Increase coins per tap",
+      "energyLimit": "Increase maximum energy capacity", 
+      "rechargingSpeed": "Faster energy regeneration",
+      "turbo": "Triple coins for limited time"
+    }
+  },
+  "rating": {
+    "title": "Leaderboard",
+    "rank": "Rank",
+    "player": "Player",
+    "coins": "Coins",
+    "myRank": "My Rank"
+  },
+  "friends": {
+    "title": "Friends",
+    "invite": "Invite Friends",
+    "referralLink": "Referral Link",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "invited": "Invited",
+    "pending": "Pending",
+    "accepted": "Accepted"
+  },
+  "battlepass": {
+    "title": "Battle Pass",
+    "free": "Free",
+    "advanced": "Advanced Pass",
+    "luxury": "Luxury Pass",
+    "claimAll": "Claim All",
+    "upgrade": "Upgrade",
+    "level": "Level {level}",
+    "xp": "XP",
+    "daysLeft": "{days} days left"
+  }
+}

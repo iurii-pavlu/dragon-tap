@@ -1,198 +1,302 @@
-# 🐲 Dragon Tap - Zalo Mini App
+# 🐲 Dragon Tap - Telegram WebApp MVP
 
-A complete tap-to-earn dragon game built for the Zalo Mini App platform with Next.js, TypeScript, and modern game mechanics.
+A complete tap-to-earn dragon game built as a Telegram WebApp MVP, designed to match the **Gangsta Monkey UI 1:1** with dragon theming. Ready for Zalo Mini App port.
 
-## 🎮 Project Overview
-- **Name**: Dragon Tap
-- **Platform**: Zalo Mini App
-- **Goal**: Create an engaging tap-to-earn game with dragon theming, battle pass system, and comprehensive monetization
-- **Tech Stack**: Next.js 13.4 + TypeScript + MongoDB + Prisma + TailwindCSS + Shadcn/UI
+## 🎯 Project Overview
 
-## 🌟 Features
+- **Platform**: Telegram WebApp (MVP), ready for Zalo Mini App
+- **Design**: Gangsta Monkey UI clone with dragon theme
+- **Tech Stack**: Next.js 15 + TypeScript + MongoDB + Tailwind CSS
+- **Domain**: shrimphunters.com
+- **Features**: Full game loop, Battle Pass, referrals, tasks, daily rewards, boosters, leaderboard
 
-### ✅ Currently Implemented Features
+## 🚀 Quick Start
 
-#### 🎯 Core Game Mechanics
-- **Dragon Tap System**: Interactive dragon tapping with energy management
-- **Dragon Evolution**: 6 dragon types (Fire, Water, Earth, Air, Shadow, Light)
-- **Attribute System**: Claws (tap multiplier), Scales (energy cap), Fire (crit chance), Wings (AFK), Spirit (global bonus)
-- **Critical Hit System**: Visual feedback with special animations
-- **AFK Earnings**: Passive income system with 30-minute bank
-- **Energy System**: 100 base energy, 1 per minute regeneration
+### Prerequisites
 
-#### 💎 Battle Pass System
-- **3-Tier Structure**: Free, Advanced (39,000 VND), Luxury (59,000 VND)
-- **10 Battle Pass Levels**: Progressive rewards and difficulty
-- **Seasonal System**: Season 1 with time-limited content
-- **Reward Types**: Coins, Gems, Tickets, VIP days, Cosmetics
+- Node.js 18+
+- MongoDB Atlas account
+- Git
 
-#### 📱 Game Sections (5 Main Tabs)
-1. **Friends**: Invite system with referral bonuses
-2. **Tasks**: Daily/Weekly tasks with partner integration placeholders
-3. **Tap!**: Main game screen with dragon interaction
-4. **Rating**: Global and weekly leaderboards
-5. **Games**: Mini-games (Lucky Wheel, Heads/Tails, Raffle, Voucher Hunter)
-
-#### 🌐 Internationalization
-- **English (en-US)** and **Vietnamese (vi-VN)** support
-- Complete translation system with contextual switching
-- Language switcher in header
-
-#### ⚙️ Admin Panel
-- **Analytics Dashboard**: User metrics, retention, conversion rates
-- **User Management**: User list with VIP status and activity tracking
-- **Lootbox Management**: Create and manage loot tables with drop rates
-- **Game Configuration**: Adjust game balance and parameters
-
-### 📊 Data Architecture
-
-#### 🗄️ Database Models (MongoDB + Prisma)
-- **Users**: Complete player profiles with game progress
-- **Friends**: Referral and social connections
-- **Inventory**: Item management system
-- **Purchases**: Transaction tracking and receipts
-- **LootTables & LootItems**: Configurable reward systems
-- **Tasks & UserTasks**: Mission and achievement system
-- **Leaderboards**: Ranking and competition data
-- **Analytics**: Event tracking and user behavior
-- **BattlePass**: Seasonal progression system
-
-#### 💾 State Management
-- **Zustand**: Game state with persistence
-- **Local Storage**: Progress saving and offline capability
-- **Real-time Updates**: Energy regeneration and AFK earnings
-
-## 🚀 URLs
-
-- **Live Application**: https://3000-idxndb0mjydfvyhirbjfm-6532622b.e2b.dev
-- **GitHub Repository**: https://github.com/iurii-pavlu/dragon-tap
-- **Admin Panel**: https://3000-idxndb0mjydfvyhirbjfm-6532622b.e2b.dev/admin
-
-## 🎮 User Guide
-
-### Getting Started
-1. **Launch the Game**: Open Dragon Tap in Zalo Mini App
-2. **Choose Language**: English or Vietnamese available
-3. **Start Tapping**: Tap the dragon to earn coins
-4. **Manage Energy**: Wait for energy regeneration or purchase refills
-5. **Upgrade Dragon**: Spend coins to improve dragon attributes
-
-### Game Mechanics
-- **Tap Rewards**: Base reward × Claws multiplier × Spirit bonus × Crit multiplier
-- **Energy Management**: Each tap costs 1 energy, regenerates 1 per minute
-- **Dragon Attributes**:
-  - 🗡️ **Claws**: +10% tap reward per level
-  - 🛡️ **Scales**: +10 max energy per level
-  - 🔥 **Fire**: +0.2% crit chance per level
-  - 🦋 **Wings**: +0.2 AFK taps/second per level (max 2.0)
-  - ✨ **Spirit**: +5% global bonus per level
-
-### Battle Pass
-- **Free Tier**: Always available with basic rewards
-- **Advanced Pass**: 39,000 VND - Enhanced rewards
-- **Luxury Pass**: 59,000 VND - Premium rewards and exclusive items
-- **XP Earning**: Complete tasks and tap to gain Battle Pass experience
-
-### Mini Games
-- **Lucky Wheel**: Spin for dragon treasures
-- **Heads or Tails**: Double-or-nothing coin gambling
-- **Raffle**: Ticket-based prize draws
-- **Voucher Hunter**: Partner reward hunting (Lazada/Shopee integration planned)
-
-## 🛠️ Technical Implementation
-
-### Frontend Architecture
-- **Framework**: Next.js 13.4 with App Router
-- **Styling**: TailwindCSS + Shadcn/UI components
-- **Animations**: Framer Motion for tap effects and transitions
-- **Icons**: Lucide React + custom dragon-themed assets
-- **Responsive**: Mobile-first design optimized for Zalo WebView
-
-### Backend Integration (Planned)
-- **Authentication**: Zalo SDK integration for user auth
-- **Payments**: ZaloPay API for battle pass and in-app purchases
-- **Analytics**: Event tracking for user behavior and game balance
-- **Partner APIs**: Lazada and Shopee integration for voucher hunting
-
-### Game Balance
-- **Monetization Strategy**: 
-  - Battle Pass: 39k/59k VND pricing
-  - Energy refills and lootboxes
-  - VIP subscription (39k VND/week)
-- **Retention Mechanics**:
-  - Daily login rewards
-  - Progressive difficulty
-  - Social features and leaderboards
-
-## 🎯 Recommended Next Steps
-
-### Priority 1: Core Integration
-1. **Zalo SDK Integration**: User authentication and social features
-2. **ZaloPay Implementation**: Payment processing for battle pass
-3. **Database Setup**: MongoDB deployment and connection
-4. **Analytics Integration**: Event tracking and user behavior analysis
-
-### Priority 2: Game Content
-1. **Lootbox System**: Implement reward drops and animations
-2. **Mini-Game Logic**: Complete game mechanics for wheel, raffle, etc.
-3. **Shop System**: Purchase interface for energy, tickets, cosmetics
-4. **VIP Benefits**: Auto-tap, AFK bonuses, exclusive rewards
-
-### Priority 3: Partner Integration
-1. **Lazada API**: Voucher and offer integration
-2. **Shopee API**: Partner task and reward system
-3. **Advertisement Integration**: Rewarded video ads
-4. **Push Notifications**: Engagement and retention campaigns
-
-### Priority 4: Polish & Launch
-1. **Performance Optimization**: Bundle size and loading speed
-2. **Testing**: User acceptance testing and game balance
-3. **Localization**: Complete Vietnamese translation review
-4. **Launch Strategy**: Zalo Mini App store submission
-
-## 📈 Expected Metrics (Based on Specification)
-- **ARPU**: ~$0.56/month
-- **ARPPU**: ~$4.7/month  
-- **LTV (6 months)**: ~$3.4
-- **Day 1 Retention**: Target 78%
-- **Purchase Conversion**: Target 3.4%
-- **VIP Conversion**: Target 1.8%
-
-## 🔧 Development Setup
+### 1. Environment Setup
 
 ```bash
-# Install dependencies
+# Clone and install
+git clone <dragon-tap-repo>
+cd dragon-tap
 npm install
 
-# Setup environment variables
-cp .env.local.example .env.local
+# Copy environment variables
+cp .env.example .env
+```
 
-# Generate Prisma client
-npx prisma generate
+### 2. Configure Environment Variables
 
-# Run development server
+Edit `.env` with your values:
+
+```env
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/dragon-tap
+JWT_SECRET=your-super-secret-jwt-key-at-least-32-characters-long
+NEXT_PUBLIC_APP_NAME=Shrimp Hunters Games
+NEXT_PUBLIC_TELEGRAM_BOT_NAME=your_bot_name
+NEXT_PUBLIC_BASE_URL=https://shrimphunters.com
+```
+
+### 3. Development
+
+```bash
+# Start development server
 npm run dev
 
 # Build for production
 npm run build
 npm start
+
+# Lint and format
+npm run lint
+npm run format
 ```
 
-## 📱 Platform Deployment
-- **Status**: ✅ Development Complete
-- **Platform**: Zalo Mini App Ready
-- **Infrastructure**: Next.js static generation compatible
-- **Database**: MongoDB Atlas ready
-- **CDN**: Optimized for global deployment
+## 🏗️ Architecture
 
-## 🎨 Design System
-- **Theme**: Dark mode dragon aesthetic
-- **Colors**: Fire gradients (orange/red), mystical purples, treasure golds
-- **Typography**: Clean, readable fonts optimized for mobile
-- **Animations**: Smooth tap feedback, floating coin effects, critical hit celebrations
-- **Responsive**: Mobile-first design with tablet/desktop support
+### Frontend Structure
+```
+app/
+├── (tabs)/           # Tab-based pages
+│   ├── tap/          # Main game screen
+│   ├── tasks/        # Task management
+│   ├── games/        # Mini-games
+│   ├── rating/       # Leaderboard
+│   └── friends/      # Referral system
+├── api/              # API routes
+└── layout.tsx        # Root layout
+
+components/
+├── ui/               # Reusable UI components
+└── dragon/           # Dragon-specific components
+
+lib/
+├── db.ts             # MongoDB connection
+├── models.ts         # Mongoose schemas
+├── auth.ts           # JWT authentication
+├── game.ts           # Game logic utilities
+├── i18n.ts           # Internationalization
+└── telegram.ts       # Telegram WebApp SDK
+```
+
+### Database Models (MongoDB)
+
+- **Users**: Profile, balance, energy, level
+- **Abilities**: Multitap, energy cap, recharge speed, turbo
+- **Tasks**: Mission system with rewards
+- **TaskCompletions**: User task progress
+- **DailyRewards**: Daily login rewards
+- **LeaderboardSnapshots**: Ranking system
+- **BattlePassSeason**: Season configuration
+- **BattlePassProgress**: User battle pass progress
+- **Referrals**: Friend invitation system
+
+## 🎮 Game Features
+
+### Core Mechanics
+- **Dragon Tapping**: Interactive dragon with energy system
+- **Energy Management**: 500 base energy, 1 per minute regeneration
+- **Coin System**: Earn coins per tap with multipliers
+- **Level Progression**: User leveling system
+
+### Boosters
+- **Multitap**: Increase coins per tap
+- **Energy Limit**: Expand energy capacity
+- **Recharging Speed**: Faster energy regeneration  
+- **Turbo**: Temporary 3x coin multiplier
+
+### Daily Systems
+- **Daily Rewards**: 10-day progressive rewards
+- **Tasks**: Subscribe, watch, custom missions
+- **Energy Regeneration**: Automatic over time
+
+### Social Features
+- **Referral System**: Invite friends with bonus rewards
+- **Leaderboard**: Global ranking by coins
+- **Friends List**: Track invited players
+
+### Battle Pass
+- **3 Tiers**: Free, Advanced (39k VND), Luxury (59k VND)
+- **XP System**: Earn through taps and tasks
+- **Seasonal Rewards**: Time-limited content
+
+## 🌐 Internationalization
+
+### Supported Languages
+- **English (EN)**: Default language
+- **Vietnamese (VI)**: Full localization
+
+### Language Management
+- Content stored in `/content/{locale}.json`
+- Client-side switching without page reload
+- localStorage persistence
+
+## 📱 Telegram WebApp Integration
+
+### Features
+- Telegram WebApp SDK integration
+- User authentication via Telegram
+- Theme adaptation to Telegram colors
+- Native sharing capabilities
+- Viewport management
+
+### Usage
+```typescript
+import { telegramWebApp } from '@/lib/telegram'
+
+// Check if running in Telegram
+if (telegramWebApp.isAvailable()) {
+  telegramWebApp.expand()
+  const user = telegramWebApp.getUser()
+}
+```
+
+## 🔧 Game Configuration
+
+### Economy Settings (`/config/economy.json`)
+```json
+{
+  "energyCap": 500,
+  "tapBase": 1,
+  "turboMultiplier": 3,
+  "boosterPrices": {
+    "multitap": [4000, 12000, 30000, ...],
+    "energyCap": [200, 600, 1500, ...],
+    "recharge": [2000, 6000, 15000, ...]
+  },
+  "dailyRewards": [500, 1000, 2500, 5000, ...]
+}
+```
+
+### Customizable Parameters
+- Energy capacity and regeneration
+- Tap rewards and multipliers
+- Booster prices and effects
+- Daily reward amounts
+- Battle pass pricing
+
+## 🚀 Deployment
+
+### Vercel Deployment
+
+1. **Connect Repository**
+   ```bash
+   # Install Vercel CLI
+   npm i -g vercel
+   
+   # Deploy to Vercel
+   vercel --prod
+   ```
+
+2. **Environment Variables**
+   Set all environment variables in Vercel dashboard
+
+3. **Custom Domain**
+   Configure `shrimphunters.com` in Vercel domain settings
+
+### MongoDB Atlas Setup
+
+1. Create MongoDB Atlas cluster
+2. Create database user
+3. Whitelist IP addresses (0.0.0.0/0 for development)
+4. Get connection string for `MONGODB_URI`
+
+## 📊 Performance Targets
+
+### Lighthouse Scores (Target ≥95)
+- **Performance**: ≥95
+- **SEO**: ≥95  
+- **Accessibility**: ≥95
+- **Best Practices**: ≥95
+
+### Mobile Optimization
+- Touch-friendly tap targets
+- Responsive design (mobile-first)
+- Fast loading times
+- Offline capability consideration
+
+## 🔐 Security
+
+### Authentication
+- JWT tokens with HttpOnly cookies
+- Rate limiting on API routes
+- Input validation with Zod schemas
+
+### Data Protection
+- Sanitized user inputs
+- Secure MongoDB queries
+- Environment variable protection
+
+## 🧪 Testing Checklist
+
+### UI/UX Verification
+- [ ] Pixel-perfect match with Gangsta Monkey design
+- [ ] All tabs functional and responsive
+- [ ] Dragon tap animation and feedback
+- [ ] Energy depletion and regeneration
+- [ ] Coin earning and display
+
+### Game Mechanics
+- [ ] Multitap booster increases coins per tap
+- [ ] Energy system working correctly
+- [ ] Daily rewards reset logic
+- [ ] Battle pass XP and rewards
+- [ ] Referral system functionality
+
+### Localization
+- [ ] EN/VI language switching
+- [ ] All UI text translated
+- [ ] Currency and number formatting
+
+### Telegram Integration
+- [ ] WebApp SDK initialization
+- [ ] User data retrieval
+- [ ] Theme adaptation
+- [ ] Sharing functionality
+
+## 📈 Next Steps
+
+### Priority 1: Zalo Mini App Port
+1. **Zalo SDK Integration**: Replace Telegram SDK
+2. **ZaloPay Implementation**: Payment processing
+3. **Platform Optimization**: Bundle size and performance
+4. **Submission Preparation**: App store requirements
+
+### Priority 2: Game Expansion
+1. **Mini-games Implementation**: Lucky wheel, heads/tails, raffle
+2. **Advanced Battle Pass**: More seasons and rewards
+3. **Guild System**: Team-based gameplay
+4. **Events**: Special time-limited content
+
+### Priority 3: Monetization
+1. **In-app Purchases**: Energy, boosters, cosmetics
+2. **Advertisement Integration**: Rewarded video ads
+3. **VIP Subscription**: Premium benefits
+4. **Partner Integration**: Brand collaborations
+
+## 🔗 Links
+
+- **Live Demo**: Will be available after deployment
+- **Repository**: `<dragon-tap>`
+- **Domain**: shrimphunters.com
+- **Documentation**: This README
+
+## 🤝 Contributing
+
+1. Create feature branch: `git checkout -b feature/new-feature`
+2. Commit changes: `git commit -m "Add new feature"`
+3. Push to branch: `git push origin feature/new-feature`
+4. Create Pull Request
+
+## 📄 License
+
+This project is proprietary software for Shrimp Hunters Games.
 
 ---
 
-**Dragon Tap** - Built with ❤️ for the Zalo Mini App platform  
-Ready for integration, testing, and launch! 🚀🐲
+**Dragon Tap** - Built with ❤️ for Telegram WebApp and Zalo Mini App platforms
