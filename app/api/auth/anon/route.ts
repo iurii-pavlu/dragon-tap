@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
     console.error('Auth error:', error)
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { success: false, error: 'Invalid request data', details: error.errors },
+        { success: false, error: 'Invalid request data', details: error.issues },
         { status: 400 }
       )
     }

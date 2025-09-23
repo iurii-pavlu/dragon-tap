@@ -85,7 +85,7 @@ export default function GamesPage() {
               More Games Coming Soon!
             </h3>
             <p className="text-sm text-text-secondary">
-              We're working on exciting new games for you to enjoy. Stay tuned!
+              We&apos;re working on exciting new games for you to enjoy. Stay tuned!
             </p>
           </CardContent>
         </Card>

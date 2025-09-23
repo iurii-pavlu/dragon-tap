@@ -3,10 +3,11 @@
 import * as React from "react"
 import { Button } from "./button"
 import { cn } from "@/lib/utils"
+import { Locale } from "@/lib/i18n"
 
 interface LanguageSwitcherProps {
-  currentLocale: string
-  onLocaleChange: (locale: string) => void
+  currentLocale: Locale
+  onLocaleChange: (locale: Locale) => void
   className?: string
 }
 
