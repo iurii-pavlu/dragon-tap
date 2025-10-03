@@ -1,0 +1,39 @@
+{
+  "name": "dragon-tap",
+  "version": "2.0.0",
+  "description": "Complete Dragon Tap tap-to-earn ecosystem with game frontend and admin panel",
+  "author": "Shrimp Hunters Studio",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iurii-pavlu/dragon-tap.git"
+  },
+  "workspaces": [
+    "game",
+    "admin"
+  ],
+  "scripts": {
+    "game:dev": "cd game && npm run dev",
+    "game:build": "cd game && npm run build",
+    "admin:dev": "cd admin && npm run dev",
+    "admin:build": "cd admin && npm run build",
+    "dev": "concurrently \"npm run game:dev\" \"npm run admin:dev\"",
+    "build": "npm run game:build && npm run admin:build",
+    "install:all": "npm install && cd game && npm install && cd ../admin && npm install"
+  },
+  "keywords": [
+    "dragon-tap",
+    "tap-to-earn",
+    "telegram-mini-app",
+    "zalo-mini-app",
+    "game",
+    "admin-panel",
+    "mongodb",
+    "react",
+    "nextjs"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
